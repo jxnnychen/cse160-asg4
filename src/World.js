@@ -654,7 +654,7 @@ function renderAllShapes() {
   var startTime = performance.now()
 
   var projMat = new Matrix4();
-  projMat.setPerspective(50, 1*canvas.width/canvas.height, 1, 100);
+  projMat.setPerspective(60, canvas.width/canvas.height, 0.1, 1000);
   gl.uniformMatrix4fv(u_ProjectionMatrix, false, projMat.elements);
 
   var viewMat = new Matrix4();
