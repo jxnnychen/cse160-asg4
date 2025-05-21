@@ -1,0 +1,129 @@
+<!-- 
+ Jenny Chen
+ jchen679@ucsc.edu
+
+ Notes to Grader:
+ - implemented block collision
+ - simple minecraft (F to place, R to remove)
+ - find button game
+ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>JC World</title>
+    <style>
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+    <div id="buttonsRemaining" style="position:absolute; top:10px; left:10px; color:white; font-size:20px;"></div>
+    <p id="numdot"> XXX </p>
+    <div class="row">find and remove (F to place, R to remove) all 5 buttons to win!</div>
+    <div class="row">- wasd to move (q/e to pan left/right or click and drag)</div>
+    <div class="row">
+      <button id="toggleNormals">Show Normals (N)</button>
+      <button id="toggleLighting">Lighting On (L)</button>
+    </div>
+
+    <div class="row">- Orbitting Light Controls</div>
+    <div class="row">
+      <div>Light Controls:</div>
+      <label>
+        Orbit Speed:
+        <input type="range" id="lightSpeed" min="0" max="100" value="30">
+      </label>
+      <label>
+        Orbit Radius:
+        <input type="range" id="lightRadius" min="1" max="100" value="30">
+      </label>
+      <label>
+        Height:
+        <input type="range" id="lightHeight" min="0" max="100" value="50">
+      </label>
+    </div>
+    <div class="row">
+      <div>Light Color:</div>
+      <label>
+        Red: <input type="range" id="lightRed" min="0" max="100" value="100">
+      </label>
+      <label>
+        Green: <input type="range" id="lightGreen" min="0" max="100" value="100">
+      </label>
+      <label>
+        Blue: <input type="range" id="lightBlue" min="0" max="100" value="100">
+      </label>
+    </div>
+
+    <div class="row">- Spotlight Controls (look up!) </div>
+    <div class="row">
+      <div>Spotlight Position:</div>
+      <label>
+        X: <input type="range" id="spotlightPosX" min="-10" max="10" value="0">
+      </label>
+      <label>
+        Y: <input type="range" id="spotlightPosY" min="0" max="10" value="3">
+      </label>
+      <label>
+        Z: <input type="range" id="spotlightPosZ" min="-10" max="10" value="0">
+      </label>
+    </div>
+
+    <div class="row">
+      <div>Spotlight Direction:</div>
+      <label>
+        X: <input type="range" id="spotlightDirX" min="-100" max="100" value="0">
+      </label>
+      <label>
+        Y: <input type="range" id="spotlightDirY" min="-100" max="100" value="-100">
+      </label>
+      <label>
+        Z: <input type="range" id="spotlightDirZ" min="-100" max="100" value="0">
+      </label>
+      <label>
+        Cutoff Angle: <input type="range" id="spotlightCutoff" min="0" max="90" value="25">
+      </label>
+    </div>
+
+    <div class="row">
+      <div>Spotlight Color:</div>
+      <label>
+        Red: <input type="range" id="spotlightRed" min="0" max="100" value="100">
+      </label>
+      <label>
+        Green: <input type="range" id="spotlightGreen" min="0" max="100" value="100">
+      </label>
+      <label>
+        Blue: <input type="range" id="spotlightBlue" min="0" max="100" value="100">
+      </label>
+    </div>
+
+    <div class="row">
+      Block Types
+      <button id="blockTypeSnow">Snow (1)</button>
+      <button id="blockTypeIce">Ice (2)</button>
+      <button id="blockTypeDirt">Dirt (3)</button>
+      <button id="blockTypePackedIce">Packed Ice (4)</button>
+      Current: <span id="currentBlockType">Snow</span>
+    </div>
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix.js"></script>
+    <script src="World.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Camera.js"></script>
+    <script src="Cube.js"></script>
+    <script src="Sphere.js"></script>
+  </body>
+</html>
